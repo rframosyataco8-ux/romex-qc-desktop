@@ -1,7 +1,7 @@
-2.4.0
+2.5.0
 
-Sistema completo funcional.
-Código fuente puro (sin loaders zlib).
-Diseño profesional corporativo Material Design.
-Login premium + fluidez al navegar.
-Mismos datos que estudio-vida-util-romex.
+Siembra (punto de partida) = mismos datos del sistema web.
+Columna Siembra NO editable (análisis inicial fijo).
+Solo se editan resultados de meses de seguimiento (ADMIN).
+Diseño formal tipo documento I-EVUP-R-309.
+Analista: Nereyda Huachua Flores.
