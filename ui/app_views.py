@@ -1,7 +1,196 @@
 # ============================================================
-# Romex QC Desktop — Vistas de contenido (diseño limpio v2.1)
+# Romex QC Desktop — Vistas profesionales v2.4
 # ============================================================
-import base64, zlib
-_PAYLOAD = "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"
-_code = zlib.decompress(base64.b64decode(_PAYLOAD)).decode("utf-8")
-exec(compile(_code, __file__, "exec"), globals())
+import customtkinter as ctk
+from config import (
+    COMPANY_NAME, PLANT_NAME, DOC_CODE, MONTH_NAMES,
+    MICRO_KEYS, MICRO_LABELS, FISICO_LABELS, BASELINES, COLORS
+)
+from utils.charts import (
+    create_micro_bar_chart, create_fisico_bar_chart,
+    create_trend_chart, destroy_chart
+)
+
+ACCENT = "#1565c0"
+ACCENT_SOFT = "#e3f2fd"
+CARD = "#ffffff"
+TEXT = "#1a2332"
+TEXT_SEC = "#5a6a7a"
+BORDER = "#d0d7de"
+OK = "#0d7a3f"
+SURFACE = "#f0f4f8"
+
+
+class MainAppViews:
+    def _get_row(self, rows, month):
+        for r in rows:
+            if r["Mes"] == month:
+                return r
+        return None
+
+    def _render_content(self):
+        for w in self.content.winfo_children():
+            w.destroy()
+        destroy_chart(self.chart_canvas, self.chart_fig)
+        destroy_chart(self.trend_canvas, self.trend_fig)
+        self.chart_canvas = self.chart_fig = None
+        self.trend_canvas = self.trend_fig = None
+        self.entry_vars = {}
+        if not self.active_producto:
+            return
+
+        bl = BASELINES.get(self.active_codigo, {})
+        mes_name = MONTH_NAMES.get(self.active_month, str(self.active_month))
+
+        info = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=12)
+        info.pack(fill="x", pady=(0, 14))
+
+        top = ctk.CTkFrame(info, fg_color="transparent")
+        top.pack(fill="x", padx=22, pady=(16, 6))
+        ctk.CTkLabel(top, text=COMPANY_NAME, font=ctk.CTkFont(size=13, weight="bold"), text_color=ACCENT).pack(side="left")
+        ctk.CTkLabel(top, text=f"{DOC_CODE}  ·  {PLANT_NAME}", font=ctk.CTkFont(size=11), text_color=TEXT_SEC).pack(side="right")
+
+        ctk.CTkLabel(info, text=f"Resultados  ·  {mes_name} {self.active_year}",
+                     font=ctk.CTkFont(size=14, weight="bold"), text_color=TEXT).pack(anchor="w", padx=22, pady=(2, 10))
+
+        grid = ctk.CTkFrame(info, fg_color="transparent")
+        grid.pack(fill="x", padx=22, pady=(0, 16))
+        cells = [
+            ("Producto", self.active_producto["Nombre"]),
+            ("Lote", self.active_producto["Lote"]),
+            ("Mes / Año", f"{mes_name}  {self.active_year}"),
+            ("Siembra", bl.get("fecha_siembra", "—")),
+        ]
+        for i, (lbl, val) in enumerate(cells):
+            cell = ctk.CTkFrame(grid, fg_color="#f8fafc", corner_radius=8)
+            cell.grid(row=0, column=i, sticky="ew", padx=3)
+            grid.columnconfigure(i, weight=1)
+            ctk.CTkLabel(cell, text=lbl, font=ctk.CTkFont(size=10), text_color=TEXT_SEC).pack(anchor="w", padx=12, pady=(8, 0))
+            ctk.CTkLabel(cell, text=str(val), font=ctk.CTkFont(size=12, weight="bold"), text_color=TEXT).pack(anchor="w", padx=12, pady=(1, 8))
+
+        if self.active_mode == "micro":
+            self._render_micro(bl, mes_name)
+        else:
+            self._render_fisico(bl, mes_name)
+
+    def _render_micro(self, bl, mes_name):
+        row = self._get_row(self.micro_rows, self.active_month)
+        baseline = bl.get("micro", {})
+        card = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=12)
+        card.pack(fill="x", pady=(0, 14))
+        ctk.CTkLabel(card, text="Microbiología  (ufc/gr)", font=ctk.CTkFont(size=13, weight="bold"), text_color=TEXT).pack(anchor="w", padx=22, pady=(16, 10))
+
+        table = ctk.CTkFrame(card, fg_color="transparent")
+        table.pack(fill="x", padx=22, pady=(0, 6))
+        hdr = ctk.CTkFrame(table, fg_color="#f0f4f8", corner_radius=8)
+        hdr.pack(fill="x", pady=(0, 4))
+        for col, w in [("Parámetro", 140), ("Siembra", 100), ("Resultado", 120), ("Estado", 100)]:
+            ctk.CTkLabel(hdr, text=col, width=w, font=ctk.CTkFont(size=11, weight="bold"), text_color=TEXT_SEC).pack(side="left", padx=8, pady=8)
+
+        data = {}
+        dbmap = {"rtamv": "RTAMV", "mohos": "Mohos", "coliformes": "Coliformes", "ecoli": "EColi",
+                 "enterobacterias": "Enterobacterias", "levaduras": "Levaduras", "saureus": "SAureus"}
+        for key in MICRO_KEYS:
+            val = row.get(dbmap.get(key, key), 0) if row else 0
+            data[key] = val
+            rf = ctk.CTkFrame(table, fg_color="transparent")
+            rf.pack(fill="x", pady=1)
+            ctk.CTkLabel(rf, text=MICRO_LABELS[key], width=140, anchor="w", font=ctk.CTkFont(size=12), text_color=TEXT).pack(side="left", padx=8, pady=5)
+            ctk.CTkLabel(rf, text=str(baseline.get(key, 0)), width=100, font=ctk.CTkFont(size=12), text_color=TEXT_SEC).pack(side="left", padx=8)
+            var = ctk.StringVar(value=str(val if val is not None else 0))
+            self.entry_vars[key] = var
+            ent = ctk.CTkEntry(rf, textvariable=var, width=100, height=32, corner_radius=8,
+                               fg_color="#f8fafc", border_color=BORDER, text_color=TEXT, font=ctk.CTkFont(size=12),
+                               state="normal" if self.is_admin else "disabled")
+            ent.pack(side="left", padx=8)
+            if self.is_admin:
+                ent.bind("<FocusOut>", lambda e, k=key: self._autosave_micro())
+            ctk.CTkLabel(rf, text="LIBERADO", width=100, font=ctk.CTkFont(size=11), text_color=OK).pack(side="left", padx=8)
+
+        if self.is_admin:
+            ctk.CTkButton(card, text="Guardar", width=140, height=34, corner_radius=8,
+                          fg_color=ACCENT, hover_color="#0d47a1", font=ctk.CTkFont(size=12, weight="bold"),
+                          command=self._autosave_micro).pack(anchor="e", padx=22, pady=(6, 16))
+        else:
+            ctk.CTkFrame(card, height=10, fg_color="transparent").pack()
+
+        cc = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=12)
+        cc.pack(fill="x", pady=(0, 14))
+        ctk.CTkLabel(cc, text=f"Comparación  ·  Siembra vs {mes_name}", font=ctk.CTkFont(size=13, weight="bold"), text_color=TEXT).pack(anchor="w", padx=22, pady=(16, 6))
+        host = ctk.CTkFrame(cc, fg_color="transparent")
+        host.pack(fill="x", padx=14, pady=(0, 14))
+        try:
+            widget, canvas, fig = create_micro_bar_chart(host, data, baseline=baseline, mes_label=mes_name)
+            widget.pack(fill="x")
+            self.chart_canvas, self.chart_fig = canvas, fig
+        except Exception:
+            ctk.CTkLabel(host, text="Gráfico no disponible", text_color=TEXT_SEC).pack(pady=16)
+
+        if self.micro_rows:
+            tc = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=12)
+            tc.pack(fill="x", pady=(0, 14))
+            ctk.CTkLabel(tc, text="Tendencia  ·  RTAMV", font=ctk.CTkFont(size=13, weight="bold"), text_color=TEXT).pack(anchor="w", padx=22, pady=(16, 6))
+            th = ctk.CTkFrame(tc, fg_color="transparent")
+            th.pack(fill="x", padx=14, pady=(0, 14))
+            try:
+                w2, c2, f2 = create_trend_chart(th, self.micro_rows, "RTAMV", "RTAMV", COLORS.get("rtamv", ACCENT),
+                                                 baseline_value=baseline.get("rtamv"), y_label="ufc/gr")
+                w2.pack(fill="x")
+                self.trend_canvas, self.trend_fig = c2, f2
+            except Exception:
+                pass
+
+    def _render_fisico(self, bl, mes_name):
+        row = self._get_row(self.fisico_rows, self.active_month)
+        baseline = bl.get("fisico", {})
+        fields = list(baseline.keys()) if baseline else ["humedad", "ph", "ceniza", "grasa"]
+        card = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=12)
+        card.pack(fill="x", pady=(0, 14))
+        ctk.CTkLabel(card, text="Físicoquímico", font=ctk.CTkFont(size=13, weight="bold"), text_color=TEXT).pack(anchor="w", padx=22, pady=(16, 10))
+
+        table = ctk.CTkFrame(card, fg_color="transparent")
+        table.pack(fill="x", padx=22, pady=(0, 6))
+        hdr = ctk.CTkFrame(table, fg_color="#f0f4f8", corner_radius=8)
+        hdr.pack(fill="x", pady=(0, 4))
+        for col, w in [("Parámetro", 140), ("Siembra", 100), ("Resultado", 120), ("Estado", 100)]:
+            ctk.CTkLabel(hdr, text=col, width=w, font=ctk.CTkFont(size=11, weight="bold"), text_color=TEXT_SEC).pack(side="left", padx=8, pady=8)
+
+        data = {}
+        dbmap = {"humedad": "Humedad", "ph": "PH", "ceniza": "Ceniza", "grasa": "Grasa", "fineza": "Fineza", "acidez": "Acidez"}
+        for key in fields:
+            val = row.get(dbmap.get(key, key)) if row else None
+            data[key] = val
+            rf = ctk.CTkFrame(table, fg_color="transparent")
+            rf.pack(fill="x", pady=1)
+            ctk.CTkLabel(rf, text=FISICO_LABELS.get(key, key), width=140, anchor="w", font=ctk.CTkFont(size=12), text_color=TEXT).pack(side="left", padx=8, pady=5)
+            bv = baseline.get(key)
+            ctk.CTkLabel(rf, text=f"{bv:.2f}" if bv is not None else "—", width=100, font=ctk.CTkFont(size=12), text_color=TEXT_SEC).pack(side="left", padx=8)
+            display = f"{float(val):.2f}" if val is not None else ""
+            var = ctk.StringVar(value=display)
+            self.entry_vars[key] = var
+            ent = ctk.CTkEntry(rf, textvariable=var, width=100, height=32, corner_radius=8,
+                               fg_color="#f8fafc", border_color=BORDER, text_color=TEXT, font=ctk.CTkFont(size=12),
+                               state="normal" if self.is_admin else "disabled")
+            ent.pack(side="left", padx=8)
+            if self.is_admin:
+                ent.bind("<FocusOut>", lambda e, k=key: self._autosave_fisico())
+            ctk.CTkLabel(rf, text="CONFORME", width=100, font=ctk.CTkFont(size=11), text_color=OK).pack(side="left", padx=8)
+
+        if self.is_admin:
+            ctk.CTkButton(card, text="Guardar", width=140, height=34, corner_radius=8,
+                          fg_color=ACCENT, hover_color="#0d47a1", font=ctk.CTkFont(size=12, weight="bold"),
+                          command=self._autosave_fisico).pack(anchor="e", padx=22, pady=(6, 16))
+        else:
+            ctk.CTkFrame(card, height=10, fg_color="transparent").pack()
+
+        cc = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=12)
+        cc.pack(fill="x", pady=(0, 14))
+        ctk.CTkLabel(cc, text=f"Comparación  ·  Siembra vs {mes_name}", font=ctk.CTkFont(size=13, weight="bold"), text_color=TEXT).pack(anchor="w", padx=22, pady=(16, 6))
+        host = ctk.CTkFrame(cc, fg_color="transparent")
+        host.pack(fill="x", padx=14, pady=(0, 14))
+        try:
+            widget, canvas, fig = create_fisico_bar_chart(host, data, fields, baseline=baseline, mes_label=mes_name)
+            widget.pack(fill="x")
+            self.chart_canvas, self.chart_fig = canvas, fig
+        except Exception:
+            ctk.CTkLabel(host, text="Gráfico no disponible", text_color=TEXT_SEC).pack(pady=16)
