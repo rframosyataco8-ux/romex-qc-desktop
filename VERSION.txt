@@ -1,7 +1,8 @@
-2.5.0
+2.6.0
 
-Siembra (punto de partida) = mismos datos del sistema web.
-Columna Siembra NO editable (análisis inicial fijo).
-Solo se editan resultados de meses de seguimiento (ADMIN).
-Diseño formal tipo documento I-EVUP-R-309.
+Siembra (análisis inicial) = mismos datos del sistema web estudio-vida-util-romex.
+Columna Siembra FIJA — no editable.
+Solo se editan resultados de meses de seguimiento (rol ADMIN).
+Diseño formal documento I-EVUP-R-309.
 Analista: Nereyda Huachua Flores.
+SQL Auth: rodrigo / rodrigo123

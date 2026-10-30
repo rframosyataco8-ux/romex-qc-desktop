@@ -4,16 +4,13 @@
 # ============================================================
 
 # --- Conexión a SQL Server ---
-# Cambia estos valores según tu instalación de SQL Server.
-
-DB_SERVER = r"localhost"          # o ".\\SQLEXPRESS"  o "localhost\\SQLEXPRESS"
+DB_SERVER = r"localhost"
 DB_NAME = "RomexQC"
-DB_USER = ""                      # Déjalo vacío si usas Windows Authentication
-DB_PASSWORD = ""                  # Déjalo vacío si usas Windows Authentication
-DB_TRUSTED = True                 # True = Windows Authentication (recomendado)
-DB_DRIVER = "ODBC Driver 17 for SQL Server"   # Si falla, prueba "ODBC Driver 18 for SQL Server"
+DB_USER = "rodrigo"
+DB_PASSWORD = "rodrigo123"
+DB_TRUSTED = False
+DB_DRIVER = "ODBC Driver 17 for SQL Server"
 
-# Cadena de conexión completa (se arma automáticamente)
 def get_connection_string():
     if DB_TRUSTED or (not DB_USER and not DB_PASSWORD):
         return (
@@ -37,7 +34,7 @@ def get_connection_string():
 COMPANY_NAME = "EXPORTADORA ROMEX S.A."
 PLANT_NAME = "Planta de Cacao Chincha"
 DOC_CODE = "I-EVUP-R-309"
-APP_VERSION = "2.0.0"
+APP_VERSION = "2.6.0"
 APP_TITLE = "Romex QC · Estudio de Vida Útil"
 
 # --- Nombres de meses ---
@@ -111,7 +108,11 @@ COLORS = {
     "baseline": "#90a4ae"
 }
 
-# --- Baselines (punto de partida / siembra) ---
+# ============================================================
+# SIEMBRA = punto de partida (análisis inicial del sistema web)
+# Estos valores NO se editan en la app de escritorio.
+# Fuente: data/baselines.json del repositorio estudio-vida-util-romex
+# ============================================================
 BASELINES = {
     "torta_natural": {
         "lote": "44260304",
