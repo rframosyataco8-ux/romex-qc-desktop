@@ -1,4 +1,6 @@
-2.1.0
+2.2.0
 
-Diseño limpio, ordenado, espacioso y profesional.
-Mismos datos que estudio-vida-util-romex (productos, lotes, siembra, micro, físico).
+Diseño profesional corporativo.
+Login de dos paneles (marca + formulario).
+Colores Material Design del sistema web original (#1565c0).
+Mismos datos y funcionalidad.
