@@ -1,6 +1,7 @@
-2.2.0
+2.4.0
 
-Diseño profesional corporativo.
-Login de dos paneles (marca + formulario).
-Colores Material Design del sistema web original (#1565c0).
-Mismos datos y funcionalidad.
+Sistema completo funcional.
+Código fuente puro (sin loaders zlib).
+Diseño profesional corporativo Material Design.
+Login premium + fluidez al navegar.
+Mismos datos que estudio-vida-util-romex.
