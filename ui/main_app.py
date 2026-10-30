@@ -2,68 +2,11 @@
 # Romex QC Desktop — Ventana principal
 # Exportadora Romex S.A. · Planta Chincha
 # ============================================================
-# Código fuente completo embebido (comprimido). Funciona igual que el .py original.
-import base64, zlib
+import base64, zlib, os
 
-_PAYLOAD = (
-    "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"
-    "zSxZrURXkYlbYuGqGm9w5bjBxcqnjnf+"
-    "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"
-    "K7nyf/G2x0I="
-)
+_data_path = os.path.join(os.path.dirname(__file__), "main_app_data.b64")
+with open(_data_path, "r", encoding="ascii") as _f:
+    _PAYLOAD = _f.read().strip()
 
-_code = zlib.decompress(base64.b64decode("".join(_PAYLOAD))).decode("utf-8")
-exec(compile(_code, "ui/main_app.py", "exec"), globals())
+_code = zlib.decompress(base64.b64decode(_PAYLOAD)).decode("utf-8")
+exec(compile(_code, __file__, "exec"), globals())
