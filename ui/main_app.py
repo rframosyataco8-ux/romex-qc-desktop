@@ -1,5 +1,5 @@
 # ============================================================
-# Romex QC Desktop — Ventana principal
+# Romex QC Desktop — Ventana principal (diseño limpio v2.1)
 # Exportadora Romex S.A. · Planta Chincha
 # ============================================================
 import base64, zlib, os
