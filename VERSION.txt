@@ -1,5 +1,6 @@
-2.7.0
+2.8.0
 
-Diseño del sistema refinado.
-Login y ventana principal más espaciosos y formales.
-Siembra fija (mismos datos del sistema web).
+Estética visual refinada.
+Paleta slate + azul corporativo Material.
+Más espacio, bordes redondeados, tipografía clara.
+Siembra fija (datos del sistema web).
