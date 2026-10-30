@@ -1,0 +1,4 @@
+2.1.0
+
+Diseño limpio, ordenado, espacioso y profesional.
+Mismos datos que estudio-vida-util-romex (productos, lotes, siembra, micro, físico).
