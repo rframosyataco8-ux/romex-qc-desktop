@@ -1,5 +1,5 @@
 # ============================================================
-# Romex QC Desktop — Ventana principal (diseño profesional v2.2)
+# Romex QC Desktop — Ventana principal (profesional + fluidez v2.3)
 # Exportadora Romex S.A. · Planta Chincha
 # ============================================================
 
@@ -23,7 +23,6 @@ from utils.charts import (
     create_trend_chart, destroy_chart
 )
 
-# Paleta corporativa (Material Design — sistema web original)
 SIDEBAR_BG = "#0d1b2a"
 SIDEBAR_HOVER = "#1b2838"
 SIDEBAR_ACTIVE = "#1565c0"
@@ -64,11 +63,18 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
         self.trend_fig = None
         self.entry_vars = {}
         self.product_btns = {}
+        self._busy = False
         self._build_layout()
-        self.after(60, self._load_productos)
+        self.after(80, self._load_productos)
+
+    def _show_loading(self, msg="Cargando…"):
+        for w in self.content.winfo_children():
+            w.destroy()
+        box = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=14)
+        box.pack(fill="x", pady=40, padx=40)
+        ctk.CTkLabel(box, text=msg, font=ctk.CTkFont(size=13), text_color=TEXT_SEC).pack(pady=36)
 
     def _build_layout(self):
-        # Sidebar
         self.sidebar = ctk.CTkFrame(self, width=272, corner_radius=0, fg_color=SIDEBAR_BG)
         self.sidebar.pack(side="left", fill="y")
         self.sidebar.pack_propagate(False)
@@ -106,7 +112,6 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
             fg_color="transparent", hover_color="#263238", text_color="#90a4ae",
             font=ctk.CTkFont(size=11), command=self._logout).pack(anchor="w", padx=16, pady=(10, 0))
 
-        # Main
         self.main = ctk.CTkFrame(self, fg_color=SURFACE, corner_radius=0)
         self.main.pack(side="left", fill="both", expand=True)
 
@@ -185,6 +190,8 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
             self.product_btns[codigo] = btn
 
     def _select_producto(self, codigo):
+        if self._busy:
+            return
         self.active_codigo = codigo
         self.active_producto = next((p for p in self.productos if p["Codigo"] == codigo), None)
         if not self.active_producto:
@@ -196,11 +203,13 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
                 btn.configure(fg_color="transparent", text_color="#cfd8dc")
         self.lbl_title.configure(text=self.active_producto["Nombre"])
         self.lbl_lote.configure(text=f"  Lote {self.active_producto['Lote']}  ")
-        self._load_month_data()
+        self._show_loading("Cargando producto…")
+        self.after(90, self._load_month_data)
 
     def _on_year_change(self, value):
         self.active_year = int(value)
-        self._load_month_data()
+        self._show_loading("Cargando año…")
+        self.after(90, self._load_month_data)
 
     def _set_mode(self, mode):
         self.active_mode = mode
@@ -210,7 +219,8 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
         else:
             self.btn_fisico.configure(fg_color=CARD, text_color=ACCENT, font=ctk.CTkFont(size=12, weight="bold"))
             self.btn_micro.configure(fg_color="transparent", text_color=TEXT_SEC, font=ctk.CTkFont(size=12))
-        self._render_content()
+        self._show_loading("Actualizando vista…")
+        self.after(70, self._render_content)
 
     def _load_month_data(self):
         if not self.active_producto:
@@ -256,4 +266,5 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
         if not months:
             months = [BASELINES.get(self.active_codigo, {}).get("mes_inicio", 5)]
         self._render_tabs(months)
-        self._render_content()
+        self._show_loading("Cargando mes…")
+        self.after(70, self._render_content)
