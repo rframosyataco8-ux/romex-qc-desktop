@@ -1,5 +1,5 @@
 # ============================================================
-# Romex QC Desktop — Login · estética visual v2.8
+# Romex QC Desktop — Login · estética + animaciones v2.9
 # ============================================================
 
 import customtkinter as ctk
@@ -7,6 +7,7 @@ from tkinter import messagebox
 from config import APP_TITLE, COMPANY_NAME, PLANT_NAME, APP_VERSION, DOC_CODE
 from db.queries import login_user
 from db.connection import test_connection, DatabaseError
+from utils.animations import fade_button_color, BLUE_FADE, GREEN_FADE
 
 
 BG = "#040b14"
@@ -39,7 +40,9 @@ class LoginWindow(ctk.CTk):
         self.geometry(f"{w}x{h}+{x}+{y}")
 
         self._build()
-        self.after(120, self._check_db)
+        # Entrada suave del botón
+        self.after(150, lambda: fade_button_color(self.btn_login, [PRIMARY_MID, PRIMARY], delay=40))
+        self.after(200, self._check_db)
 
     def _build(self):
         left = ctk.CTkFrame(self, fg_color=PRIMARY, corner_radius=0, width=450)
@@ -136,9 +139,12 @@ class LoginWindow(ctk.CTk):
             if user is None:
                 self.lbl_error.configure(text="Usuario o contraseña incorrectos")
                 self.btn_login.configure(state="normal", text="Entrar al sistema", fg_color=PRIMARY)
+                fade_button_color(self.btn_login, ["#c62828", PRIMARY], delay=50)
                 return
-            self.btn_login.configure(text="Acceso concedido…", fg_color=OK)
-            self.after(250, lambda: self._finish_login(user))
+            # Animación de éxito antes de abrir
+            self.btn_login.configure(text="Acceso concedido…")
+            fade_button_color(self.btn_login, GREEN_FADE + [OK], delay=35)
+            self.after(420, lambda: self._finish_login(user))
         except DatabaseError as e:
             self.lbl_error.configure(text="Error de base de datos")
             messagebox.showerror("Error de conexión", str(e))

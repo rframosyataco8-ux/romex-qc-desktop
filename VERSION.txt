@@ -1,6 +1,9 @@
-2.8.0
+2.9.0
 
-Estética visual refinada.
-Paleta slate + azul corporativo Material.
-Más espacio, bordes redondeados, tipografía clara.
-Siembra fija (datos del sistema web).
+Animaciones suaves:
+- Transición de color en botón de login (entrada y éxito)
+- Pulso del texto al cargar producto / mes / modo
+- Retrasos suaves entre vistas (sin saltos bruscos)
+
+Nota: CustomTkinter no soporta animaciones CSS;
+se implementan con after() de forma nativa y ligera.

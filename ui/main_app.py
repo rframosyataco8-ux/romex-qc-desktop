@@ -1,5 +1,5 @@
 # ============================================================
-# Romex QC Desktop — Ventana principal · estética visual v2.8
+# Romex QC Desktop — Ventana principal · animaciones v2.9
 # ============================================================
 
 import customtkinter as ctk
@@ -21,6 +21,7 @@ from utils.charts import (
     create_micro_bar_chart, create_fisico_bar_chart,
     create_trend_chart, destroy_chart
 )
+from utils.animations import pulse_label, GRAY_PULSE
 
 SIDEBAR_BG = "#040b14"
 SIDEBAR_HOVER = "#0c1829"
@@ -64,15 +65,22 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
         self.entry_vars = {}
         self.product_btns = {}
         self._busy = False
+        self._load_token = 0
         self._build_layout()
-        self.after(80, self._load_productos)
+        self.after(100, self._load_productos)
 
     def _show_loading(self, msg="Cargando…"):
+        self._load_token += 1
+        token = self._load_token
         for w in self.content.winfo_children():
             w.destroy()
         box = ctk.CTkFrame(self.content, fg_color=CARD, corner_radius=20)
         box.pack(fill="x", pady=64, padx=64)
-        ctk.CTkLabel(box, text=msg, font=ctk.CTkFont(size=15), text_color=TEXT_SEC).pack(pady=48)
+        lbl = ctk.CTkLabel(box, text=msg, font=ctk.CTkFont(size=15), text_color=TEXT_SEC)
+        lbl.pack(pady=48)
+        # Pulso suave del texto de carga
+        pulse_label(lbl, GRAY_PULSE, delay=160, cycles=3)
+        return token
 
     def _build_layout(self):
         self.sidebar = ctk.CTkFrame(self, width=296, corner_radius=0, fg_color=SIDEBAR_BG)
@@ -216,12 +224,13 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
         if bl.get("mes_inicio"):
             self.active_month = bl["mes_inicio"]
         self._show_loading("Cargando producto…")
-        self.after(90, self._load_month_data)
+        # Transición suave: espera un poco más para sentir la animación
+        self.after(180, self._load_month_data)
 
     def _on_year_change(self, value):
         self.active_year = int(value)
         self._show_loading("Cargando año…")
-        self.after(90, self._load_month_data)
+        self.after(160, self._load_month_data)
 
     def _set_mode(self, mode):
         self.active_mode = mode
@@ -232,7 +241,7 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
             self.btn_fisico.configure(fg_color=CARD, text_color=ACCENT, font=ctk.CTkFont(size=13, weight="bold"))
             self.btn_micro.configure(fg_color="transparent", text_color=TEXT_SEC, font=ctk.CTkFont(size=13))
         self._show_loading("Actualizando vista…")
-        self.after(70, self._render_content)
+        self.after(140, self._render_content)
 
     def _load_month_data(self):
         if not self.active_producto:
@@ -295,4 +304,4 @@ class MainApp(ctk.CTk, MainAppViews, MainAppActions):
             months = [mes_s or 5]
         self._render_tabs(months)
         self._show_loading("Cargando mes…")
-        self.after(70, self._render_content)
+        self.after(140, self._render_content)
